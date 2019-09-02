@@ -191,20 +191,20 @@ Notes:
 * Bounding boxes with `confidence_score <= 0.1` will be filtered out.
 To customize, go to `utils.py`, and declare your preferred value for `conf_threshold` in `prediction2detection()`.
 
-![image 1](./readme_pic/ep=25/det_2008_000008.png) *epoch = 25*
-![image 2](./readme_pic/ep=50/det_2008_000008.png) *epoch = 50*
+![image 1](./det_2008_000008_ep=25.png) *epoch = 25*
+![image 2](./det_2008_000008_ep=50.png) *epoch = 50*
 
-![image 3](./readme_pic/ep=100/det_2008_000008.png) *epoch = 100*
-![image 4](./readme_pic/ep=150/det_2008_000008.png) *epoch = 150*
-![image gt](./readme_pic/ground-truth/det_2008_000008.png) *Ground Truth*
+![image 3](./det_2008_000008_ep=100.png) *epoch = 100*
+![image 4](./det_2008_000008_ep=150.png) *epoch = 150*
+![image gt](./det_2008_000008_gt.png) *Ground Truth*
 
 #### Loss
 
-![image loss](./readme_pic/ep=150/loss_history_lr=1e-05_ep=150_wo.png) 
+![image loss](./loss_history_lr=1e-05_ep=150_wo.png) 
 
 #### mAP
 
-![image mAP](./readme_pic/ep=150/mAP_history_lr=1e-05_ep=150_wo.png) 
+![image mAP](./mAP_history_lr=1e-05_ep=150_wo.png) 
 
 
 
