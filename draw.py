@@ -12,6 +12,7 @@ classes = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat"
 def draw_single(img_name, label_dir='./', out_dir='./', show_flag=False):
     """
     Draw bounding boxes of a SINGLE image.
+    Automatically find labels based on image names.
 
     Note: Labels share the same name as images, using YOLO format.
           e.g. Image = 000001.jpg
@@ -162,16 +163,17 @@ def visualize(y_out_epoch, img_name_epoch, image_list, out_dir, conf_threshold=0
 
 if __name__ == "__main__":
     # #  Single
-    img_name = '000001.jpg'
-    draw_single(img_name, show_flag = True)
+    # img_name = '000001.jpg'
+    img_name = '2008_000008.jpg'
+    draw_single(img_name, show_flag=True)  # automatically find label based on image name
 
     # # Multiple
-    '''
+
     img_dir = '/Users/erica/Workspace/my-yolo-implementation/data/image'
     label_dir = '/Users/erica/Workspace/my-yolo-implementation/data/label'
     out_dir = '/Users/erica/Workspace/my-yolo-implementation/det'
     
-    draw(img_dir, label_dir, out_dir)
-    '''
+    draw(img_dir, label_dir, out_dir, show_flag=True)
+
 
     print('Done.')

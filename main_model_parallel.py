@@ -216,23 +216,24 @@ if __name__ == "__main__":
     device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
     # Parameter
-    num_epoch = 50
+    num_epoch = 150
     batch_size = 32
     use_float64 = False
     use_scheduler = False
-    use_bn = True
-    learning_rate = 5e-6
+    use_bn = False
+    learning_rate = 1e-5
 
     # Weights
-    model_weights = './results/1e-5_ep=1-10/checkpoint_weights_ep10.pth'
-    # model_weights = None
+    # model_weights = './results/1e-5_ep=1-10/checkpoint_weights_ep10.pth'
+    model_weights = None
 
     # Dataset
-    phases = ['train', 'val']
-    train_txt = '/home/bizon/Dataset/VOC_yolo_format/2007_train.txt'
-    val_txt = '/home/bizon/Dataset/VOC_yolo_format/2007_val.txt'
-    # train_txt = '/home/bizon/Dataset/VOC_yolo_format/2012_sanity.txt'
-    # val_txt = '/home/bizon/Dataset/VOC_yolo_format/2012_sanity.txt'
+    # phases = ['train', 'val']
+    phases = ['train']
+    # train_txt = '/home/bizon/Dataset/VOC_yolo_format/2007_train.txt'
+    # val_txt = '/home/bizon/Dataset/VOC_yolo_format/2007_val.txt'
+    train_txt = '/home/bizon/Dataset/VOC_yolo_format/2012_sanity.txt'
+    val_txt = '/home/bizon/Dataset/VOC_yolo_format/2012_sanity.txt'
 
     # Model
     yolo_model = build_darknet_parallel(path=model_weights, use_bn=use_bn)
@@ -250,7 +251,7 @@ if __name__ == "__main__":
 
     min_loss, best_mAP = train(num_epoch=num_epoch, train_txt=train_txt, val_txt=val_txt, phases=phases, model=yolo_model,
                                optimizer=optimizer, learning_rate=learning_rate, scheduler=scheduler,
-                               checkpoint_interval=1, use_float64=use_float64)
+                               checkpoint_interval=50, use_float64=use_float64, use_visualization=True)
 
     print('=======================================')
     print('Training completed.')
