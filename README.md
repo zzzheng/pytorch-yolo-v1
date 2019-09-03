@@ -46,7 +46,7 @@ Matplotlib >= 2.2.3
 
 
 
-## Troubleshooting
+## Tweak
 
 Since Pytorch does not come with the `same padding` option, minor modification is required:
 
