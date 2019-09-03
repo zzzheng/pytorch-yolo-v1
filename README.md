@@ -1,10 +1,10 @@
 # README
 
-This is my PyTorch implementation of 
+>This is my PyTorch implementation of 
 [YOLO v1](https://pjreddie.com/media/files/papers/yolo.pdf) from scratch, which includes scripts for both 
-**training/validation** and **testing**. 
+**train/val** and **test**. 
 
-Results of [sanity check](#Sanity-Check) is shown below.
+>Results of [sanity check](#Sanity-Check) is shown below.
 
 ## Requirements
 Python 3.7
