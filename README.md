@@ -135,11 +135,6 @@ Please follow instructions `Get The Pascal VOC Data` and `Generate Label for VOC
 **How to run?**
 
 `$ python train_model_parallel.py -n [num_epoch] -t [train_txt]`
-
-e.g.
-`$ python train_model_parallel.py -n 1000 
--t '/VOC_yolo_format/2007_train.txt' -v '/VOC_yolo_format/2007_val.txt'`
-
 ## Outputs
 `Training log`, `plots`, `checkpoints` and **best** `weights` will be automatically saved in these folders.
 
