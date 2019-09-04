@@ -149,7 +149,7 @@ Overfit the model with two samples.
 
 Set regularization to zero by `use_bn = False`, and use **train** mode ONLY via `phase = ['train']`.
 
-**Parameters**
+**Default settings**
     
     num_epoch = 150
     use_float64 = False
