@@ -1,64 +1,69 @@
 # README
-
->This is my PyTorch implementation of 
-[YOLO v1](https://pjreddie.com/media/files/papers/yolo.pdf) from scratch, which includes scripts for both 
+This is my PyTorch implementation of 
+[YOLO v1](https://pjreddie.com/media/files/papers/yolo.pdf) from scratch, which includes scripts for  
 **train/val** and **test**. 
 
->Results of [sanity check](#Sanity-Check) is shown below.
+It not only helps me gain learning experience of using PyTorch, but also serves as a framework for
+ One-Stage Detector facilitates future development.
+ Please See [Descriptions](#description). 
+
+
+This implementation pass [sanity check](#Sanity-Check). 
 
 ## Requirements
-Python 3.7
+**Packages**
+- Python 3.7
 
-CUDA 10.0
+- CUDA 10.0
 
-PyTorch 1.1
+- PyTorch 1.1
 
-Numpy >= 1.15
+- Numpy >= 1.15
 
-Scikit-image >= 0.14
+- Scikit-image >= 0.14
 
-Matplotlib >= 2.2.3
+- Matplotlib >= 2.2.3
+
+**Hardware**
+- **2 GPUs** each with at least **11 GB** RAM.
 
 ## Descriptions
 
 **Modules**
 
-`utils.py` -- data format transformation and performance evaluation
+- `utils.py` -- data format transformation and performance evaluation
 
-`draw.py` -- output visualization
+- `draw.py` -- output visualization
 
-`dataset.py` -- dataset and dataloader
+- `dataset.py` -- dataset and dataloader
 
-`model.py` -- build model 
+- `model.py` -- build model 
 
-`model_parallel.py` -- build model in parallel 
+- `model_parallel.py` -- build model in parallel 
 (**placing 2 different sub-networks of the model onto 2 GPUs**)
 
-`train.py` -- calculate loss
+- `train.py` -- calculate loss
 
 **Scripts**
 
-`main_model_parallel.py` -- **train** model on VOC  
+- `train_model_parallel.py` -- **train** model on VOC  
 
-`main_test_voc.py` -- **test** model on VOC
-
-
+- `test_voc.py` -- **test** model on VOC
 
 
 
-## Tweak
 
+
+## Usage
 Since Pytorch does not come with the `same padding` option, minor modification is required:
 
-**Step 1: Go to `conv` module**
+###Step 1: Modify `conv` module
 
-Go to PyTorch site package folder.
-
-In my case it is
-`/venv/lib/python3.7/site-packages/torch/nn/modules/conv.py`
+Go to PyTorch site package folder (e.g.
+`/venv/lib/python3.7/site-packages/torch/nn/modules/conv.py`).
 
 
-**Step 2: Add custom function**
+<!--**Step 2: Add custom function**-->
 
 Define `conv2d_same_padding` as follows.
     
@@ -84,7 +89,7 @@ Define `conv2d_same_padding` as follows.
                   padding=(padding_rows // 2, padding_cols // 2),
                   dilation=dilation, groups=groups)
 
-**Step 3: Modify `forward( )`**
+<!--**Step 3: Modify `forward( )`**-->
 
 Modify `forward` function in `class Conv2d( _ConvNd)` by replacing `F.conv2d` with `conv2d_same_padding`.
 
@@ -96,6 +101,7 @@ Modify `forward` function in `class Conv2d( _ConvNd)` by replacing `F.conv2d` wi
             #                        self.padding, self.dilation, self.groups)
             return conv2d_same_padding(input, self.weight, self.bias, self.stride,
                         self.padding, self.dilation, self.groups) ## ZZ: same padding like TensorFlow    
+
 
 ## Dataset
 `dataset.py` follows the same data format as that of the original author.
