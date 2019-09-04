@@ -1,7 +1,6 @@
 # README
 This is my PyTorch implementation of 
-[YOLO v1](https://pjreddie.com/media/files/papers/yolo.pdf) from scratch, which includes scripts for  
-**train/val** and **test**. 
+[YOLO v1](https://pjreddie.com/media/files/papers/yolo.pdf) from scratch, which includes scripts for **train/val** and **test**. 
 
 It not only helps me gain learning experience of using PyTorch, but also serves as a framework for
  One-Stage Detector facilitates future development.
