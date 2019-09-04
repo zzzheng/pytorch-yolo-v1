@@ -103,8 +103,6 @@ Modify `forward` function in `class Conv2d( _ConvNd)` by replacing `F.conv2d` wi
 
 
 ### Step 2: Download data
-`dataset.py` follows the same data format as that of the original author.
-
 Please follow instructions **Get The Pascal VOC Data** and **Generate Label for VOC** at
  https://pjreddie.com/darknet/yolo/.
  
