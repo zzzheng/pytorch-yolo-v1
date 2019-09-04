@@ -36,7 +36,7 @@ This implementation pass [sanity check](#Sanity-Check).
 
 - `dataset.py` -- dataset and dataloader
 
-- `model.py` -- build model 
+- `model.py` -- define network architecture 
 
 - `model_parallel.py` -- build model in parallel 
 (**placing 2 different sub-networks of the model onto 2 GPUs**)
