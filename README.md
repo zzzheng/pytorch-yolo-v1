@@ -54,7 +54,8 @@ This implementation pass [sanity check](#Sanity-Check).
 
 
 ## Usage
-Since Pytorch does not come with the `same padding` option, minor modification is required:
+**Warning:** Since Pytorch does not come with the `same padding` option, minor modification is required:
+
 
 ### Step 1: Modify `conv` module
 
