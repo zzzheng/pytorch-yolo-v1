@@ -99,7 +99,7 @@ Modify `forward` function in `class Conv2d( _ConvNd)` by replacing `F.conv2d` wi
             #return F.conv2d(input, self.weight, self.bias, self.stride,
             #                        self.padding, self.dilation, self.groups)
             return conv2d_same_padding(input, self.weight, self.bias, self.stride,
-                        self.padding, self.dilation, self.groups) ## ZZ: same padding like TensorFlow    
+                        self.padding, self.dilation, self.groups) ## same padding like TensorFlow    
 
 
 ### Step 2: Download data
