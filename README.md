@@ -57,7 +57,7 @@ This implementation pass [sanity check](#Sanity-Check).
 ## Usage
 Since Pytorch does not come with the `same padding` option, minor modification is required:
 
-###Step 1: Modify `conv` module
+### Step 1: Modify `conv` module
 
 Go to PyTorch site package folder (e.g.
 `/venv/lib/python3.7/site-packages/torch/nn/modules/conv.py`).
@@ -103,7 +103,7 @@ Modify `forward` function in `class Conv2d( _ConvNd)` by replacing `F.conv2d` wi
                         self.padding, self.dilation, self.groups) ## ZZ: same padding like TensorFlow    
 
 
-## Dataset
+### Step 2: Download data
 `dataset.py` follows the same data format as that of the original author.
 
 Please follow instructions `Get The Pascal VOC Data` and `Generate Label for VOC` at
@@ -118,22 +118,10 @@ Please follow instructions `Get The Pascal VOC Data` and `Generate Label for VOC
     2012_val.txt    VOCtrainval_11-May-2012.tar
 
 
-## Training
+### Step 3: Train model
 
+**Default settings**
 
-*Note:* Require **2 GPUs** each with at least **11 GB** RAM.
-
-**1. Train/Val Data**
-
-Declare your training and validation data via `train_txt` and `val_txt`.
-For example:
-
-    train_txt = '/VOC_yolo_format/2007_train.txt'
-    val_txt = '/VOC_yolo_format/2007_val.txt'
-
-**2. Set Parameters**
-
-    num_epoch = 1000
     batch_size = 32
     use_float64 = False
     use_scheduler = True
@@ -144,7 +132,13 @@ For example:
 
 *Note*: For sanity check, set `use_bn = False` and `phase = ['train']` instead.
 
-**3. Run `main_model_parallel.py`**
+**How to run?**
+
+`$ python train_model_parallel.py -n [num_epoch] -t [train_txt]`
+
+e.g.
+`$ python train_model_parallel.py -n 1000 
+-t '/VOC_yolo_format/2007_train.txt' -v '/VOC_yolo_format/2007_val.txt'`
 
 ## Outputs
 `Training log`, `plots`, `checkpoints` and **best** `weights` will be automatically saved in these folders.
@@ -154,17 +148,6 @@ For example:
                 ./checkpoints
                 ./weights
 
-## Evaluation
-Similar to
-https://github.com/rafaelpadilla/Object-Detection-Metrics. This repo uses YOLO data format.
-
-
-## Change Log
-**Activation function**
-
-As the author mentioned:
-``We use a linear activation for the final layer and all other layers use the leaky
-rectified linear activation.``
 
 
 ## Experiments
